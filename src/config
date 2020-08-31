@@ -1,0 +1,18 @@
+importar  multer  de  'multer' ;
+importar  criptografia  de  'crypto' ;
+importar  caminho  de  'caminho' ;
+
+const  tmpFolder  =  path . resolve ( __dirname ,  '..' ,  '..' ,  'tmp' ) ;
+
+export  default  {
+  diretório : tmpFolder ,
+  armazenamento : multer . diskStorage ( {
+    destino : tmpFolder ,
+    nome do arquivo ( solicitação ,  arquivo ,  retorno de chamada )  {
+      const  fileHash  =  crypto . randomBytes ( 10 ) . toString ( 'hex' ) ;
+      const  fileName  =  ` $ { fileHash } - $ { file . nome original } ` ;
+
+      retorno de  chamada de retorno ( null ,  fileName ) ;
+    } ,
+  } ) ,
+} ;
